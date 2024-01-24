@@ -71,6 +71,14 @@ code {
   padding: 10px;
   max-width: 600px;
 }
+.addtodo {
+  display: flex;
+  justify-content: center; /* Add this line */
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 600px;
+}
 
 .addtodo input[type="text"] {
   flex: 1;
@@ -91,4 +99,10 @@ code {
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
+}
+.empty-message {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 20px;
 }
