@@ -106,3 +106,6 @@ code {
   font-size: 18px;
   margin-top: 20px;
 }
+.strike-through {
+  text-decoration: line-through;
+}

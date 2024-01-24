@@ -5,14 +5,20 @@ export default function App() {
   const [items, setItems] = useState([]);
 
   function handleAddItem(item) {
-    setItems([...items, item]);
+    setItems([...items, { text: item, isChecked: false }]);
   }
-
+  function handleCheckChange(index) {
+    setItems(
+      items.map((item, i) =>
+        i === index ? { ...item, isChecked: !item.isChecked } : item
+      )
+    );
+  }
   return (
     <>
       <Header />
       {items.length > 0 ? (
-        <TodoList items={items} />
+        <TodoList items={items} handleCheckChange={handleCheckChange} />
       ) : (
         <p className="empty-message">No items in the list. Please add some.</p>
       )}
@@ -28,14 +34,21 @@ function Header() {
     </div>
   );
 }
-function TodoList({ items }) {
+function TodoList({ items, handleCheckChange }) {
   return (
     <div className="todolist">
       <ul className="list">
-        {items.map((item) => (
-          <li>
-            <input type="checkbox" />
-            {item}
+        {items.map((item, index) => (
+          <li key={index}>
+            <input
+              type="checkbox"
+              checked={item.isChecked}
+              onChange={() => handleCheckChange(index)}
+            />
+
+            <span className={item.isChecked ? "strike-through" : ""}>
+              {item.text}
+            </span>
             <div>
               <button>Delete</button>
             </div>
