@@ -1,0 +1,29 @@
+.addtodo {
+  display: flex;
+  justify-content: center; /* Add this line */
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 600px;
+}
+
+.addtodo input[type="text"] {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.addtodo button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
