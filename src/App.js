@@ -14,15 +14,24 @@ export default function App() {
       )
     );
   }
+
+  function handleDeleteItem(index) {
+    setItems(items.filter((item, i) => i !== index));
+  }
   return (
     <>
       <Header />
       {items.length > 0 ? (
-        <TodoList items={items} handleCheckChange={handleCheckChange} />
+        <TodoList
+          items={items}
+          handleCheckChange={handleCheckChange}
+          handleDeleteItem={handleDeleteItem}
+        />
       ) : (
         <p className="empty-message">No items in the list. Please add some.</p>
       )}
       <AddTodo handleAddItem={handleAddItem} />
+      <Footer />
     </>
   );
 }
@@ -34,7 +43,7 @@ function Header() {
     </div>
   );
 }
-function TodoList({ items, handleCheckChange }) {
+function TodoList({ items, handleCheckChange, handleDeleteItem }) {
   return (
     <div className="todolist">
       <ul className="list">
@@ -50,7 +59,7 @@ function TodoList({ items, handleCheckChange }) {
               {item.text}
             </span>
             <div>
-              <button>Delete</button>
+              <button onClick={() => handleDeleteItem(index)}>Delete</button>
             </div>
           </li>
         ))}
@@ -85,4 +94,7 @@ function AddTodo({ handleAddItem }) {
       </form>
     </div>
   );
+}
+function Footer() {
+  return <footer className="footer">Designed with ❤️ by Tufaildar</footer>;
 }
